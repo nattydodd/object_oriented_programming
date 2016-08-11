@@ -7,20 +7,22 @@ class Paperboy
     @earnings = 0
   end
 
-  def deliver(end_address, start_address)
+  def deliver(start_address, end_address)
     papers_delivered = 0
-    if side == "odd"
-      start_address..end_address.each do |address|
+    if @side == "odd"
+      (start_address..end_address).each do |address|
         if address % 2 != 0
           papers_delivered += 1
         end
       end
-    if side == "even"
-      start_address..end_address.each do |address|
+    end
+    if @side == "even"
+      (start_address..end_address).each do |address|
         if address % 2 == 0
           papers_delivered += 1
         end
       end
+    end
     expected_quota = quota
     if (papers_delivered - expected_quota) == 0
       @earnings = paper_delivered * 0.25
@@ -30,7 +32,7 @@ class Paperboy
       @earnings = (papers_delivered * 0.25) - 2
     end
     return @earnings
-   end
+  end
 
 
   def quota
@@ -38,18 +40,7 @@ class Paperboy
   end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 end
 
 jim = Paperboy.new("Jim", "even")
+puts jim.deliver(4, 88)
