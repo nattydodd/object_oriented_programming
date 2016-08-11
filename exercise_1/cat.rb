@@ -6,6 +6,7 @@ class Cat
     @meal_time = meal_time
   end
 
+#using an if statement
   # def eats_at
     # raise @meal_time.inspect
     # raise (@meal_time > 12).inspect
@@ -17,6 +18,8 @@ class Cat
     # else
     #   "#{@meal_time}am"
     # end
+
+#using a case statement
   def eats_at
     hour =  case @meal_time
             when 13..23
@@ -30,7 +33,7 @@ class Cat
   end
 
   def meow
-    "My name is #{@name} and I eat #{@preferred_food} at #{meal_time2}"
+    puts "My name is #{@name} and I eat #{@preferred_food} at #{eats_at}"
   end
 
 end
@@ -38,4 +41,4 @@ end
 moe = Cat.new("Moe", "Whiskas", 23)
 mango = Cat.new("Mango", "Fancy Feast", 5)
 
-puts moe.eats_at
+moe.meow
