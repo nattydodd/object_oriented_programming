@@ -42,3 +42,4 @@ moe = Cat.new("Moe", "Whiskas", 23)
 mango = Cat.new("Mango", "Fancy Feast", 5)
 
 moe.meow
+mango.meow
