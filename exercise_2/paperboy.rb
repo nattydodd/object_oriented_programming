@@ -8,28 +8,28 @@ class Paperboy
   end
 
   def deliver(start_address, end_address)
-    papers_delivered = 0
+    @experience = 0
     if @side == "odd"
       (start_address..end_address).each do |address|
         if address % 2 != 0
-          papers_delivered += 1
+          @experience += 1
         end
       end
     end
     if @side == "even"
       (start_address..end_address).each do |address|
         if address % 2 == 0
-          papers_delivered += 1
+          @experience += 1
         end
       end
     end
     expected_quota = quota
-    if (papers_delivered - expected_quota) == 0
-      @earnings = paper_delivered * 0.25
-    elsif (papers_delivered - expected_quota) > 0
-      @earnings = (papers_delivered - expected_quota) * 0.50 + (expected_quota * 0.25)
+    if (@experience - expected_quota) == 0
+      @earnings = @experience * 0.25
+    elsif (@experience - expected_quota) > 0
+      @earnings = (@experience - expected_quota) * 0.50 + (@experience * 0.25)
     else
-      @earnings = (papers_delivered * 0.25) - 2
+      @earnings = (@experience * 0.25) - 2
     end
     return @earnings
   end
@@ -39,8 +39,12 @@ class Paperboy
     (@experience / 2) + 50
   end
 
+  def report
+    puts "I'm #{@name}, I've delivered #{@experience} papers and earned $#{@earnings} so far!"
+  end
 
 end
 
 jim = Paperboy.new("Jim", "even")
 puts jim.deliver(4, 88)
+puts jim.report
