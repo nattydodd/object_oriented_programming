@@ -18,7 +18,7 @@ class Rover
             puts "error"
           end
         end
-      puts "#{@location_x} #{@location_y} #{@direction}"
+
   end
 
 
@@ -65,6 +65,10 @@ class Rover
     end
   end
 
+  def rov_location
+    puts "Rover is now at #{@location_x} #{@location_y} facing #{@direction}"
+  end
+
 end
 
 puts "What is the size of the plateau? ex 5 5"
@@ -84,9 +88,10 @@ puts "how would you like Rover to move? ex L, R or M"
 # new_instructions = gets.chomp.split("")
 
 rover1.read_instruction("LMRMRM")
+rover1.rov_location
 
-puts rover1.inspect
+# puts rover1.inspect
 
-# puts "Rover is now at #{@location_x} #{@location_y} facing #{@direction}"
+
 
 # ralph = Rover.new(plateau_max, start_position, instructions)
