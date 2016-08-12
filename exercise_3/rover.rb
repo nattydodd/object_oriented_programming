@@ -7,35 +7,19 @@ class Rover
     @direction = direction
   end
 
-  puts "how would you like Rover to move? ex L, R or M"
-  instructions = gets.chomp.split("")
-
 #this code is not being read for some reason
   def read_instruction(instructions)
-      instructions.each do |command|
-          if command == "L"
-            self.turn("L")
-          elsif command == "R"
-            self.turn("R")
+      instructions.split("").each do |command|
+          if command == "L" || command == "R"
+            turn(command)
           elsif command == "M"
-            self.move
+            move
           else
             puts "error"
           end
         end
       puts "#{@location_x} #{@location_y} #{@direction}"
   end
-
-  puts "What is the size of the plateau? ex 5 5"
-  x_max, y_max = gets.split(" ")
-
-
-  puts "What is Rover's starting position? ex 1 2 N"
-  start = gets.chomp.split()
-  start[0] = location_x
-  start[1] = location_y
-  start[2] = direction
-  #error this variable are undefined?
 
 
   def turn(rotation)
@@ -75,7 +59,7 @@ class Rover
     elsif @direction == "W"
       @location_x -= 1
     elsif @direction == "S"
-      @location_y -= 1 
+      @location_y -= 1
     else
       puts "doesn't exist"
     end
@@ -83,6 +67,26 @@ class Rover
 
 end
 
-puts "Rover is now at #{@location_x} #{@location_y} facing #{@direction}"
+puts "What is the size of the plateau? ex 5 5"
+x_max, y_max = gets.split(" ")
+
+
+puts "What is Rover's starting position? ex 1 2 N"
+rover1 = Rover.new(1,2,"N")
+# start = gets.chomp.split()
+# @location_x = start[0].to_i
+# @location_y = start[1].to_i
+# @direction = start[2].to_i
+# #error this variable are undefined?
+# ralph = Rover.new(@location_x, @location_y, @direction)
+
+puts "how would you like Rover to move? ex L, R or M"
+# new_instructions = gets.chomp.split("")
+
+rover1.read_instruction("LMRMRM")
+
+puts rover1.inspect
+
+# puts "Rover is now at #{@location_x} #{@location_y} facing #{@direction}"
 
 # ralph = Rover.new(plateau_max, start_position, instructions)
