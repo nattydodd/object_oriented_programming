@@ -10,28 +10,21 @@ class Rover
   puts "What is Rover's starting position?"
   user_input2 = gets.split(" ")
   user_input2.each do |x, y, d|
-    x = location_x
-    y = location_y
-    d = direction
+                      x = location_x
+                      y = location_y
+                      d = direction
+                  end
+                  return start_position
   end
 
   puts "how would you like Rover to move?"
   instructions = gets.split(" ")
-  instructions.each do |a|
-    if a == "L" || "R"
-      a = @rotation
-    elsif a == "M"
-      movement
-    end
-
-    movement = move
 
 
   def initialize(location_x, location_y, direction)
     @location_x = location_x
     @location_y = location_y
     @direction = direction
-    @plateau_min = 0
   end
 
   def plateau_max(plateau_max)
@@ -46,17 +39,20 @@ class Rover
     instructions.split = @instructions
   end
 
-  # def read_instruction(@start_position, @instructions)
-  #   end_position = @start_position
-  # end
+  def read_instruction(instructions)
+    instructions.each do |a|
+      if a == "L" || "R"
+        a = @direction
+      elsif a == "M"
+        a.move
+      end
+  end
 
 
 
-  # end
 
-
-  def turn(@rotation)
-    case @rotation
+  def turn(rotation)
+    case rotation
       when "L"
         if @direction == "N"
           @direction = "W"
@@ -98,9 +94,7 @@ class Rover
     end
   end
 
-
-
 end
 
-
-# ralph = Rover.new(start_position, instructions)
+#
+# ralph = Rover.new(plateau_max, start_position, instructions)
