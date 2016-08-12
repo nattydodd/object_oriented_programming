@@ -2,8 +2,8 @@
 class Rover
 
   def initialize(location_x, location_y, direction)
-    @location_x = location_x
-    @location_y = location_y
+    @location_x = location_x.to_i
+    @location_y = location_y.to_i
     @direction = direction
   end
 
@@ -11,10 +11,13 @@ class Rover
     instructions.split("").each do |command|
       if command == "L"
         self.turn("L")
+        return self
       elsif command == "R"
         self.turn("R")
+        return self
       elsif command == "M"
         self.move
+        return self
       end
     end
       puts "#{@location_x} #{@location_y} #{@direction}"
@@ -25,11 +28,14 @@ class Rover
 
 
   puts "What is Rover's starting position? ex 1 2 N"
-  location_x, location_y, direction = gets.split(" ")
-  #assigning the starting positions and directions
+  start = gets.chomp.split()
+  start[0] = @location_x
+  start[1] = @location_y
+  start[2] = @direction
+
 
   puts "how would you like Rover to move? ex L, R or M"
-  instructions = gets.split(" ")
+  instructions = gets.chomp
 
 
   def turn(rotation)
@@ -75,9 +81,9 @@ class Rover
     end
   end
 
-  puts "Rover is now at #{@location_x} #{@location_y} facing #{@direction}"
-
 end
 
-#
+ralph = Rover.new(0, 0, "N")
+puts "Rover is now at #{@location_x} #{@location_y} facing #{@direction}"
+
 # ralph = Rover.new(plateau_max, start_position, instructions)
