@@ -1,54 +1,35 @@
 
 class Rover
 
-  puts "What is the size of the plateau?"
-  user_input = gets.split(" ")
-  plateau_max = []
-  plateau_max << user_input
-
-
-  puts "What is Rover's starting position?"
-  user_input2 = gets.split(" ")
-  user_input2.each do |x, y, d|
-                      x = location_x
-                      y = location_y
-                      d = direction
-                  end
-                  return start_position
-  end
-
-  puts "how would you like Rover to move?"
-  instructions = gets.split(" ")
-
-
   def initialize(location_x, location_y, direction)
     @location_x = location_x
     @location_y = location_y
     @direction = direction
   end
 
-  def plateau_max(plateau_max)
-    plateau_max.split = @plateau_max
-  end
-
-  def start_position(start_position)
-    start_position.split = @start_position
-  end
-
-  def instructions(instructions)
-    instructions.split = @instructions
-  end
-
   def read_instruction(instructions)
-    instructions.each do |a|
-      if a == "L" || "R"
-        a = @direction
-      elsif a == "M"
-        a.move
+    instructions.split("").each do |command|
+      if command == "L"
+        self.turn("L")
+      elsif command == "R"
+        self.turn("R")
+      elsif command == "M"
+        self.move
       end
+    end
+      puts "#{@location_x} #{@location_y} #{@direction}"
   end
 
+  puts "What is the size of the plateau? ex 5 5"
+  x_max, y_max = gets.split(" ")
 
+
+  puts "What is Rover's starting position? ex 1 2 N"
+  location_x, location_y, direction = gets.split(" ")
+  #assigning the starting positions and directions
+
+  puts "how would you like Rover to move? ex L, R or M"
+  instructions = gets.split(" ")
 
 
   def turn(rotation)
@@ -93,6 +74,8 @@ class Rover
       puts "doesn't exist"
     end
   end
+
+  puts "Rover is now at #{@location_x} #{@location_y} facing #{@direction}"
 
 end
 
