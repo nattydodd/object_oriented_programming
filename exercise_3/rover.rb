@@ -66,28 +66,29 @@ class Rover
   end
 
   def rov_location
+    puts @direction
     puts "Rover is now at #{@location_x} #{@location_y} facing #{@direction}"
   end
 
 end
 
-puts "What is the size of the plateau? ex 5 5"
-x_max, y_max = gets.split(" ")
+# puts "What is the size of the plateau? ex 5 5"
+# x_max, y_max = gets.split(" ")
 
 
 puts "What is Rover's starting position? ex 1 2 N"
-rover1 = Rover.new(1,2,"N")
-# start = gets.chomp.split()
-# @location_x = start[0].to_i
-# @location_y = start[1].to_i
-# @direction = start[2].to_i
-# #error this variable are undefined?
-# ralph = Rover.new(@location_x, @location_y, @direction)
+# rover1 = Rover.new(1,2,"N")
+start = gets.chomp.split()
+@location_x = start[0].to_i
+@location_y = start[1].to_i
+@direction = start[2]
+#assigning the values to the new instance of Rover class
+rover1 = Rover.new(@location_x, @location_y, @direction)
 
 puts "how would you like Rover to move? ex L, R or M"
-# new_instructions = gets.chomp.split("")
+instructions = gets.chomp
 
-rover1.read_instruction("LMRMRM")
+rover1.read_instruction(instructions)
 rover1.rov_location
 
 # puts rover1.inspect
