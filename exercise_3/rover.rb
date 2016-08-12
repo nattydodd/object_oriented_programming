@@ -7,7 +7,6 @@ class Rover
     @direction = direction
   end
 
-#this code is not being read for some reason
   def read_instruction(instructions)
       instructions.split("").each do |command|
           if command == "L" || command == "R"
@@ -92,7 +91,3 @@ rover1.read_instruction(instructions)
 rover1.rov_location
 
 # puts rover1.inspect
-
-
-
-# ralph = Rover.new(plateau_max, start_position, instructions)
